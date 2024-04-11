@@ -4,12 +4,12 @@ import App from './App.jsx'
 import './index.css'
 import 'react-router-dom'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
 import { BrowserRouter } from 'react-router-dom'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <App/>
     </BrowserRouter> 
-  </React.StrictMode>,
+  </React.StrictMode>
 )
