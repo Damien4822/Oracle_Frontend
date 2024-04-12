@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Navigate } from 'react-router-dom';
-import AuthenticateService from "../Services/AuthenticateService";
-import { withRouter } from '../withRouter';
+import AuthenticateService from '../../Services/Public/AuthenticateService';
+import {withRouter} from '../../withRouter';
 
 class RegisterComponent extends React.Component {
     constructor(props) {
@@ -38,6 +38,11 @@ class RegisterComponent extends React.Component {
     render() {
         return (
             <div>
+                <div className='row'>
+                 <div className="col-sm-2">
+                    <a href="/home" >Quay về trang Home</a>
+                 </div>
+                 </div>
                 <div className="container">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
@@ -66,4 +71,4 @@ class RegisterComponent extends React.Component {
     }
 }
 
-export default withRouter( RegisterComponent);
+export default withRouter(RegisterComponent);

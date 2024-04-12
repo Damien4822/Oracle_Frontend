@@ -1,8 +1,9 @@
 
 import React, {Component} from 'react';
-import AuthenticateService from "../Services/AuthenticateService";
+
 import { Navigate } from "react-router-dom";
-import { withRouter } from '../withRouter';
+import AuthenticateService from '../../Services/Public/AuthenticateService';
+import {withRouter} from '../../withRouter';
 
 class LoginComponent extends React.Component {
     constructor(props) {
@@ -38,6 +39,11 @@ class LoginComponent extends React.Component {
     render() {
         return (
             <div>
+                <div className='row'>
+                 <div className="col-sm-2">
+                    <a href="/home" >Quay về trang Home</a>
+                 </div>
+                 </div>
                 <div className="container">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
                             <h3 className="text-center">Login</h3>
