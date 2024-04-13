@@ -36,11 +36,20 @@ class HomeComponent extends Component {
                             <ul className="navbar-nav">
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
-                                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" onClick={() => this.props.navigate("/login")} >Đăng nhập</a></li>
-                                        <li><a className="dropdown-item" onClick={() => this.props.navigate("/register")} >Đăng ký</a></li>
-                                        <li><a className="dropdown-item" >Thay đổi thông tin</a></li>
-                                    </ul>
+                                    <>
+                                        {((localStorage.getItem('Authorization')) == null)
+                                            ?
+                                            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                <li><a className="dropdown-item" onClick={() => this.props.navigate("/login")} >Đăng nhập</a></li>
+                                                <li><a className="dropdown-item" onClick={() => this.props.navigate("/register")} >Đăng ký</a></li>
+                                                <li><a className="dropdown-item" >Thay đổi thông tin</a></li>
+                                            </ul>
+                                            :
+                                            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                                <li><a className="dropdown-item" >Thay đổi thông tin</a></li>
+                                            </ul>}
+                                    </>
                                 </li>
                             </ul>
                         </div>

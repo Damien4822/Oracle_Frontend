@@ -29,7 +29,12 @@ class LoginComponent extends React.Component {
         e.preventDefault();
         let user = {tenDangNhap: this.state.tenDangNhap, matKhau: this.state.matKhau};
         console.log('user =>' + JSON.stringify(user));
-        AuthenticateService.authenticate(user);
+        AuthenticateService.authenticate(user).then((res) =>{
+            if(localStorage.getItem('Authorization')!=null)
+                {
+                    this.props.navigate("/home")
+                }
+        });
     }
     Register = (e) => {
       this.props.navigate("/register")

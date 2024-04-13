@@ -6,6 +6,7 @@ import 'react-router-dom'
 import axios from 'axios'
 import 'bootstrap'
 import { BrowserRouter } from 'react-router-dom'
+import 'jwt-decode'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
