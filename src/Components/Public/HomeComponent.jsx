@@ -6,7 +6,7 @@ class HomeComponent extends Component {
         return (
             <div>
                 
-                <h6>Đây là trang Home</h6>
+              
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" onClick={() => this.props.navigate("/home")}>Trang Chủ</a>

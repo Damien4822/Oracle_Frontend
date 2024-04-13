@@ -24,12 +24,12 @@ class Author_Detail extends Component {
     render() {
         return (
             <div>
-                 <div className='row'>
-                 <div className="col-sm-2">
-                    <a href="/home" >Quay về trang Home</a>
-                 </div>
-                 </div>
-                <h1>Đây là trang Author Detail</h1>
+                <div className='row'>
+                    <div className="col-sm-2">
+                        <a href="/home" >Quay về trang Home</a>
+                    </div>
+                </div>
+                
                 <div className='container'>
                     <div className='row'>
                         <div className="card col-sm-6">
@@ -56,30 +56,30 @@ class Author_Detail extends Component {
                         <div className="card col-sm-6">
                             <h6> đây là phần danh sách các đầu sách của tác giả</h6>
                             <table className="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Tên Đầu Sách</th>
-                                    <th>Năm Xuất Bản</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.dauSachs.map(
-                                        dauSach =>
-                                            <tr key={dauSach.id}>
-                                                <td>{dauSach.tenDauSach}</td>
-                                                <td>{dauSach.namXuatBan}</td>
-                                                <td>
-                                                <button
-                                                        className="btn btn-info" onClick={() => this.props.navigate(`/public/book/${dauSach.id}`)}>Chi Tiết
-                                                    </button>
+                                <thead>
+                                    <tr>
+                                        <th>Tên Đầu Sách</th>
+                                        <th>Năm Xuất Bản</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        this.state.dauSachs.map(
+                                            dauSach =>
+                                                <tr key={dauSach.id}>
+                                                    <td>{dauSach.tenDauSach}</td>
+                                                    <td>{dauSach.namXuatBan}</td>
+                                                    <td>
+                                                        <button
+                                                            className="btn btn-info" onClick={() => this.props.navigate(`/public/book/${dauSach.id}`)}>Chi Tiết
+                                                        </button>
                                                     </td>
-                                            </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
+                                                </tr>
+                                        )
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
