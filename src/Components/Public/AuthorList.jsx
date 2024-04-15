@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from '../../withRouter';
 import { } from 'bootstrap';
 import AuthorServices from '../../Services/Public/AuthorServices';
+import { jwtDecode } from 'jwt-decode';
 class HomeComponent extends Component {
     constructor(props) {
         super(props);
@@ -37,18 +38,34 @@ class HomeComponent extends Component {
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
                                     <>
-                                        {((localStorage.getItem('Authorization')) == null)
+                                        {localStorage.getItem('Authorization') == null
                                             ?
-                                            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item" onClick={() => this.props.navigate("/login")} >Đăng nhập</a></li>
-                                                <li><a className="dropdown-item" onClick={() => this.props.navigate("/register")} >Đăng ký</a></li>
-                                                <li><a className="dropdown-item" >Thay đổi thông tin</a></li>
-                                            </ul>
+                                            
+                                                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                    <li><a className="dropdown-item" onClick={() => this.props.navigate("/login")} >Đăng nhập</a></li>
+                                                    <li><a className="dropdown-item" onClick={() => this.props.navigate("/register")} >Đăng ký</a></li>
+                                                    <li><a className="dropdown-item" >Navbar cho người chưa login</a></li>
+                                                </ul>
+                                            
                                             :
-                                            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                                                <li><a className="dropdown-item" >Thay đổi thông tin</a></li>
-                                            </ul>}
+                                                (
+                                                        (jwtDecode(localStorage.getItem('Authorization')).role=="[DOCGIA]")
+                                                        ?
+                                                            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                                <li><a className="dropdown-item"onClick={()=> this.props.navigate("/docgia")} >Chuyển đến trang đọc giả</a></li>
+                                                            </ul>
+                                                        :
+                                                            ((jwtDecode(localStorage.getItem('Authorization')).role=="[THUTHU]")
+                                                            ?
+                                                                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                                <li><a className="dropdown-item" >TNavbar cho thủ thư</a></li>
+                                                            </ul>
+                                                            :
+                                                                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                                    <li><a className="dropdown-item" >Navbar cho admin</a></li>
+                                                                </ul>)
+                                                )
+                                            }
                                     </>
                                 </li>
                             </ul>

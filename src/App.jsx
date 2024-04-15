@@ -9,6 +9,7 @@ import BookListComponent from './Components/Public/BookListComponent';
 import AuthorList from './Components/Public/AuthorList';
 import Author_Detail from './Components/Public/Author_Detail';
 import Book_Detail from './Components/Public/Book_Detail';
+import DocGia_Home from './Components/DocGia/DocGia_Home';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path = "/public/book/:id" element={<Book_Detail/>}/>
         <Route path = "/public/author/list" element={<AuthorList/>}/>
         <Route path = "/public/author/:id" element={<Author_Detail/>}/>
+        
+        <Route path ="/docgia" element={<DocGia_Home/>}/>
       </Routes>
     </div>
   )

@@ -38,7 +38,7 @@ class HomeComponent extends Component {
                                                         (jwtDecode(localStorage.getItem('Authorization')).role=="[DOCGIA]")
                                                         ?
                                                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                                <li><a className="dropdown-item" >Navbar cho đọc giả</a></li>
+                                                                <li><a className="dropdown-item"onClick={()=> this.props.navigate("/docgia")} >Chuyển đến trang đọc giả</a></li>
                                                             </ul>
                                                         :
                                                             ((jwtDecode(localStorage.getItem('Authorization')).role=="[THUTHU]")

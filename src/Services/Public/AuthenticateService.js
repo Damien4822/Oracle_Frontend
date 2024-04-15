@@ -14,6 +14,7 @@ class AuthenticateService {
             console.log(res.data.token);
             localStorage.setItem('Authorization', res.data.token);
             console.log(jwtDecode(res.data.token));
+            localStorage.setItem('name',jwtDecode(res.data.token).sub);
         });
     }
 }
