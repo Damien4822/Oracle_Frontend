@@ -37,11 +37,8 @@ class DocGia_PhieuMuon extends Component {
                                 <a className="nav-link" onClick={() => this.props.navigate("/docgia/phieumuon")}>Xem thông tin phiếu mượn</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Xem Thông tin phiếu thu</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Xem Thông tin phiếu phạt</a>
-                            </li>
+                                <a className="nav-link" href="#">Xem Thông tin thẻ đọc giả</a>
+                            </li>  
                         </ul>
                     </div>
                     <div className='col-sm-8'>

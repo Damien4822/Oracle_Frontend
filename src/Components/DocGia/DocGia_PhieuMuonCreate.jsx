@@ -4,7 +4,13 @@ import { withRouter } from '../../withRouter';
 class DocGia_PhieuMuonCreate extends Component {
     constructor(props) {
         super(props);
-
+        this.state={
+            quyenSachs:[],
+            ngayMuon:'',
+            ngayTra:'',
+            thanhTien:'',
+            soLuong:'',
+        }
     }
 
     render() {
