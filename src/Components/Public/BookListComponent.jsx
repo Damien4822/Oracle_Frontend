@@ -44,7 +44,7 @@ class HomeComponent extends Component {
                                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                                     <li><a className="dropdown-item" onClick={() => this.props.navigate("/login")} >Đăng nhập</a></li>
                                                     <li><a className="dropdown-item" onClick={() => this.props.navigate("/register")} >Đăng ký</a></li>
-                                                    <li><a className="dropdown-item" >Navbar cho người chưa login</a></li>
+                                                    
                                                 </ul>
                                             
                                             :

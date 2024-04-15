@@ -10,6 +10,9 @@ import AuthorList from './Components/Public/AuthorList';
 import Author_Detail from './Components/Public/Author_Detail';
 import Book_Detail from './Components/Public/Book_Detail';
 import DocGia_Home from './Components/DocGia/DocGia_Home';
+import DocGia_PhieuMuon from './Components/DocGia/DocGia_PhieuMuon';
+import DocGia_CTPhieuMuon from './Components/DocGia/DocGia_CTPhieuMuon';
+import DocGia_PhieuMuonCreate from './Components/DocGia/DocGia_PhieuMuonCreate';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
         <Route path = "/public/author/:id" element={<Author_Detail/>}/>
         
         <Route path ="/docgia" element={<DocGia_Home/>}/>
+        <Route path="/docgia/phieumuon" element={<DocGia_PhieuMuon/>}/>
+        <Route path="/docgia/phieumuon/:id/chitiet" element={<DocGia_CTPhieuMuon/>}/>
+        <Route path="/docgia/phieumuon/create" element={<DocGia_PhieuMuonCreate/>}/>
       </Routes>
     </div>
   )

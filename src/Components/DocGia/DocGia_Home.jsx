@@ -70,10 +70,10 @@ class DocGia_Home extends Component {
                     <div className='col-sm-4'>
                         <ul className="nav flex-column navbar-expand-sm bg-dark navbar-light">
                             <li className="nav-item">
-                                <a className="nav-link active" href="#">Xem Thông Tin Đọc Giả</a>
+                                <a className="nav-link active" onClick={()=> this.props.navigate("/docgia")}>Xem Thông Tin Đọc Giả</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Xem thông tin phiếu mượn</a>
+                                <a className="nav-link" onClick={()=> this.props.navigate("/docgia/phieumuon")}>Xem thông tin phiếu mượn</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Xem Thông tin phiếu thu</a>
