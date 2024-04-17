@@ -11,14 +11,14 @@ class BookServices {
         return axios.get(DauSach_API + id);
     }
     getAllQuyenSach(id)
-    {
+    {   
     return axios.get(DauSach_API + id + "/quyensach/index");
     }
     getAllTacGia(id)
     {
         return axios.get(DauSach_API + id + "/tacgia/index");
     }
-
+    
 }
 
 export default new BookServices()

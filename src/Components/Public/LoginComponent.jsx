@@ -57,7 +57,7 @@ class LoginComponent extends React.Component {
                                     <div className="form-group">
                                         <label>Tên Đăng Nhập</label>
                                         <input  name=" tenDangNhap" className="form-control"
-                                               value={this.state. tenDangNhap} onChange={this.changeUsernameHandler}/>
+                                               value={this.state.tenDangNhap} onChange={this.changeUsernameHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label>Mật khẩu</label>
