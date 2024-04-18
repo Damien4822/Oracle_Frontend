@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const PhieuMuon_API = "http://localhost:8080/docgia/";
+const PhieuMuon_API = "http://localhost:8080/docgia/phieumuon/";
 const CTPhieuMuon_API= "http://localhost:8080/docgia/phieumuon/"
 const QuyenSach_API = "http://localhost:8080/docgia/quyensach/";
 const DauSach_API = "http://localhost:8080/public/dausach/";
@@ -9,7 +9,7 @@ class DocGiaPhieuMuonService {
     getAllPhieuMuonByDocGiaId(id)
     {
         const token= localStorage.getItem("Authorization");
-        return axios.get(PhieuMuon_API +parseInt(id)+ " /phieumuon/index",{
+        return axios.get("http://localhost:8080/docgia/" +parseInt(id)+ "/phieumuon/index",{
             Headers:{
                 'Authorization':'Bearer '+ token,
                 'Access-Control-Allow-Origin': '*',
@@ -19,7 +19,7 @@ class DocGiaPhieuMuonService {
     getAllChiTietPhieuMuonByPhieuMuonId(id)
     {
         const token= localStorage.getItem("Authorization");
-        return axios.get(CTPhieuMuon_API+parseInt(id)+ " /ctphieumuon/index",{
+        return axios.get(CTPhieuMuon_API+parseInt(id)+ "/ctphieumuon/index",{
             Headers:{
                 'Authorization':'Bearer '+ token,
                 'Access-Control-Allow-Origin': '*',
@@ -38,7 +38,7 @@ class DocGiaPhieuMuonService {
     createPhieuMuon(phieu)
     {
         const token= localStorage.getItem("Authorization");
-        return axios.post(PhieuMuon_API + "create",phieu,{
+        return axios.post("http://localhost:8080/docgia/"+ localStorage.getItem('id') +"/phieumuon/create",phieu,{
             Headers:{
                 'Authorization':'Bearer '+ token,
                 'Access-Control-Allow-Origin': '*',
