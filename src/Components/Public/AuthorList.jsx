@@ -12,7 +12,6 @@ class HomeComponent extends Component {
 
     }
     componentDidMount() {
-
         AuthorServices.getAll().then(res => {
             console.log(res.data);
             this.setState({ authors: res.data })
@@ -62,7 +61,7 @@ class HomeComponent extends Component {
                                                             </ul>
                                                             :
                                                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                                    <li><a className="dropdown-item" >Navbar cho admin</a></li>
+                                                                    <li><a className="dropdown-item" onClick={()=> this.props.navigate("/admin")} >Navbar cho admin</a></li>
                                                                 </ul>)
                                                 )
                                             }

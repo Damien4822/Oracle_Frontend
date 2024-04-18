@@ -13,6 +13,13 @@ import DocGia_Home from './Components/DocGia/DocGia_Home';
 import DocGia_PhieuMuon from './Components/DocGia/DocGia_PhieuMuon';
 import DocGia_CTPhieuMuon from './Components/DocGia/DocGia_CTPhieuMuon';
 import DocGia_PhieuMuonCreate from './Components/DocGia/DocGia_PhieuMuonCreate';
+import DauSachList from './Components/Admin/DauSachList';
+import NhaXuatBanList from './Components/Admin/NhaXuatBanList';
+import TaiKhoanList from './Components/Admin/TaiKhoanList';
+import DauSachDetail from './Components/Admin/DauSachDetail';
+import TacGiaDetail from './Components/Admin/TacGiaDetail';
+import NXBCreate from './Components/Admin/NXBCreate';
+import NXBDetail from './Components/Admin/NXBDetail';
 
 function App() {
   return (
@@ -31,6 +38,15 @@ function App() {
         <Route path="/docgia/phieumuon" element={<DocGia_PhieuMuon/>}/>
         <Route path="/docgia/phieumuon/:id/chitiet" element={<DocGia_CTPhieuMuon/>}/>
         <Route path="/docgia/phieumuon/create" element={<DocGia_PhieuMuonCreate/>}/>
+
+        <Route path="/admin" element={<DauSachList/>}/>
+        <Route path = "/admin/book/:id" element={<DauSachDetail/>}/>
+        <Route path="/admin/nxb" element={<NhaXuatBanList/>}/>
+        <Route path="/admin/nxb/:id" element={<NXBDetail/>}/>
+        <Route path="/admin/nxb/create" element={<NXBCreate/>}/>
+        <Route path="/admin/taikhoan" element={<TaiKhoanList/>}/>
+        <Route path="/admin/tacgia/:id" element={<TacGiaDetail/>}/>
+     
       </Routes>
     </div>
   )

@@ -48,12 +48,11 @@ class DocGia_PhieuMuonCreate extends Component {
     };
     themQuyenSach =(e) => {
         e.preventDefault();
-        const index = e.target.selectedIndex;
-        const quyenSach = e.target.childNodes[index]
-       this.setState({sachMuons: quyenSach}), () =>{
-         console.log(this.state.sachMuons)
-         window.location.reload();
-        };
+       PhieuMuonServices.getOneQuyenSach(this.state.quyenSachId).then(res => {
+        console.log(res.data);
+        let sachMuon={id: res.data.id,
+                    }
+    });
        
     }
     chonQuyenSach = (e) => {

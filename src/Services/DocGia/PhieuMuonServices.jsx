@@ -26,7 +26,18 @@ class DocGiaPhieuMuonService {
                 'Content-Type': 'application/json',
             }})
     }
-  
+    
+    getOneQuyenSach(id)
+    {
+        const token= localStorage.getItem("Authorization");
+    return axios.get("http://localhost:8080/docgia/quyensach/"+id,{
+        Headers:{
+            'Authorization':'Bearer '+ token,
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+        }})
+    
+    }
     getAllQuyenSach(id)
     {
     return axios.get(DauSach_API + id + "/quyensach/index");
