@@ -8,19 +8,28 @@ class NhaXuatBanList extends Component {
             nxbs: []
         }
         this.deleteNXB = this.deleteNXB.bind(this);
-        
+        this.dangXuat=this.dangXuat.bind(this);
+    
     }
     componentDidMount() {
+        if(localStorage.getItem('Authorization')!==null)
+        {
         NhaXuatBanServices.getAll().then(res => {
             this.setState({ nxbs: res.data });
             console.log(this.state.nxbs);
-        });
+        });}
+        else
+        return this.props.navigate("/login");
     }
     deleteNXB(id) {
         NhaXuatBanServices.delete(id);
         window.location.reload();
     }
-    
+    dangXuat = (e) =>
+    {
+        localStorage.removeItem('Authorization');
+        this.props.navigate("/home")
+    }
     render() {
         return (
             <div>
@@ -35,6 +44,9 @@ class NhaXuatBanList extends Component {
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={() => this.props.navigate("/admin/taikhoan")}>Xem Thông tin Tài khoản</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={this.dangXuat}>Đăng Xuất</a>
                             </li>
                         </ul>
                     </div>

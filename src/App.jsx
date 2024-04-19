@@ -20,6 +20,9 @@ import DauSachDetail from './Components/Admin/DauSachDetail';
 import TacGiaDetail from './Components/Admin/TacGiaDetail';
 import NXBCreate from './Components/Admin/NXBCreate';
 import NXBDetail from './Components/Admin/NXBDetail';
+import TaiKhoanDetail from './Components/Admin/TaiKhoanDetail';
+import PhieuMuonList from './Components/ThuThu/PhieuMuonList';
+import PhieuMuonDetail from './Components/ThuThu/PhieuMuonDetail';
 
 function App() {
   return (
@@ -45,8 +48,11 @@ function App() {
         <Route path="/admin/nxb/:id" element={<NXBDetail/>}/>
         <Route path="/admin/nxb/create" element={<NXBCreate/>}/>
         <Route path="/admin/taikhoan" element={<TaiKhoanList/>}/>
+        <Route path="/admin/taikhoan/:id" element={<TaiKhoanDetail/>}/>
         <Route path="/admin/tacgia/:id" element={<TacGiaDetail/>}/>
      
+        <Route path="/thuthu" element={<PhieuMuonList/>}/>
+        <Route path="/thuthu/phieumuon/:id" element={<PhieuMuonDetail/>}/>
       </Routes>
     </div>
   )

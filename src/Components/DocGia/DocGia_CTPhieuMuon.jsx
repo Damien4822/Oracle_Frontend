@@ -7,12 +7,13 @@ class DocGia_CTPhieuMuon extends Component {
         super(props);
         this.state={
             phieumuon_id:this.props.params.id,  
-            ctphieus:[],
-            
+            ct:[],
+           phieu:[] 
         }
 
     }
     componentDidMount(){
+       
         PhieuMuonServices.getAllChiTietPhieuMuonByPhieuMuonId(this.state.phieumuon_id).then(res=>{
             console.log(res.data);
             this.setState({ctphieus:res.data});
@@ -39,7 +40,7 @@ class DocGia_CTPhieuMuon extends Component {
                                         </thead>
                                         <tbody>
                                             {
-                                                this.state.ctphieus.map(
+                                                this.state.ct.map(
                                                     ctphieu =>
                                                         <tr key={ctphieu.id}>
                                                             <td>{ctphieu.quyenSach.dauSach.tenDauSach}</td>

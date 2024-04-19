@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import DocGiaServices from '../../Services/DocGia/DocGiaServices';
@@ -21,6 +22,8 @@ class DocGia_PhieuMuonCreate extends Component {
             quyenSachs: null,
             sachMuons: [],
             quyenSachId: '',
+            phieu:[],
+            tongTien:0,
         }
         this.ngayLayChange = this.ngayLayChange.bind(this);
         this.ngayTraChange = this.ngayTraChange.bind(this);
@@ -28,6 +31,7 @@ class DocGia_PhieuMuonCreate extends Component {
         this.chonQuyenSach = this.chonQuyenSach.bind(this);
         this.chonDauSach = this.chonDauSach.bind(this);
         this.themQuyenSach = this.themQuyenSach.bind(this);
+        
     }
     componentDidMount() {
         DocGiaServices.getInfo(localStorage.getItem('name')).then(res => {
@@ -40,6 +44,7 @@ class DocGia_PhieuMuonCreate extends Component {
 
 
     }
+   
     ngayLayChange = date => {
 
         console.log(moment(date).format("YYYY-MM-DD").toString())
@@ -50,8 +55,13 @@ class DocGia_PhieuMuonCreate extends Component {
         e.preventDefault();
        PhieuMuonServices.getOneQuyenSach(this.state.quyenSachId).then(res => {
         console.log(res.data);
-        let sachMuon={id: res.data.id,
-                    }
+        this.setState(previousState => ({
+            sachMuons: [...previousState.sachMuons, res.data]
+        }),()=>{
+            let tongTien=0;
+            this.state.sachMuons.map(sach => {tongTien+=sach.gia});
+            this.setState({tongTien:tongTien});    
+            },() => console.log(this.state.tongTien));
     });
        
     }
@@ -62,6 +72,7 @@ class DocGia_PhieuMuonCreate extends Component {
         const option = el.getAttribute('id');
         console.log(option);  
             this.setState({ quyenSachId:option }, () => console.log(this.state.quyenSachId));
+            
     }
     chonDauSach = (e) => {
         e.preventDefault();
@@ -82,13 +93,17 @@ class DocGia_PhieuMuonCreate extends Component {
     TaoPhieu = (e) => {
         e.preventDefault();
         console.log(this.state.ngayLay);
-        let phieu = {
+        let phieutao = {
             ngayMuon: this.state.ngayLay, ngayTra: this.state.ngayTra,
             ngayLap: moment(new Date()).format("YYYY-MM-DD").toString(),
-            tongTien:0,tinhTrangPhieu: false, MaNV:null
+            tongTien:this.state.tongTien ,tinhTrangPhieu: false, MaNV:null
         }
-        console.log(phieu);
-        PhieuMuonServices.createPhieuMuon(phieu).then(res => console.log(res.data))
+        
+        PhieuMuonServices.createPhieuMuon(phieutao).then( res => {
+            PhieuMuonServices.createChiTietPhieuMuon(res.data.id,this.state.sachMuons);
+            
+        });
+        this.props.navigate("/docgia/phieumuon");
     }
 
     render() {
@@ -168,7 +183,6 @@ class DocGia_PhieuMuonCreate extends Component {
                                                     <th>Đầu sách</th>
                                                     <th>Năm Tái Bản</th>
                                                     <th>Giá</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <>
@@ -180,15 +194,9 @@ class DocGia_PhieuMuonCreate extends Component {
                                                 {this.state.sachMuons.map(
                                                     sach =>
                                                         <tr key={sach.id}>
-                                                            <td>{sach.tenDauSach}</td>
-                                                            <td>{sach.namXuatBan}</td>
+                                                            <td>{sach.dauSach.tenDauSach}</td>
+                                                            <td>{sach.namTaiBan}</td>
                                                             <td>{sach.gia}</td>
-                                                            <td>
-                                                                <button
-                                                                    className="btn btn-info">Xoá
-                                                                </button>
-
-                                                            </td>
                                                         </tr>
                                                 )}
                                             </tbody>
@@ -197,11 +205,9 @@ class DocGia_PhieuMuonCreate extends Component {
                                             null}
                                             </>
                                         </table>
-                                        
                                         <hr />
-
                                     </div>
-
+                                    <h6>Tổng tiền:{this.state.tongTien}</h6>
                                 </form>
 
                             </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import DocGiaServices from '../../Services/DocGia/DocGiaServices';
-import PhieuMuonServices from '../../Services/DocGia/PhieuMuonServices';
+
+import PhieuMuonServices from '../../Services/ThuThu/PhieuMuonServices';
 import { withRouter } from '../../withRouter';
 
-class DocGia_PhieuMuon extends Component {
+class ThuThu_PhieuMuon extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,22 +18,10 @@ class DocGia_PhieuMuon extends Component {
         this.props.navigate("/home");
     }
     componentDidMount() {
-        if(localStorage.getItem('Authorization')!==null)
-        
-        {
-
-            DocGiaServices.getInfo(localStorage.getItem('name')).then(res => {
-                this.setState({ id: parseInt(res.data.id) });
-                localStorage.setItem('id', res.data.id);
-            })
-            console.log(this.state.docGia);
-            PhieuMuonServices.getAllPhieuMuonByDocGiaId(localStorage.getItem('id')).then(res => {
-                this.setState({ phieumuons: res.data });
-                console.log(res.data)
-            });
-        }
-        else this.props.navigate("/login");
-       
+       PhieuMuonServices.getAllPhieuMuon().then(res=>{
+        console.log(res.data);
+        this.setState({phieumuons:res.data});
+       })
     }
     render() {
         return (
@@ -42,14 +30,9 @@ class DocGia_PhieuMuon extends Component {
                     <div className='col-sm-4'>
                         <ul className="nav flex-column navbar-expand-sm bg-dark navbar-light">
                             <li className="nav-item">
-                                <a className="nav-link active" onClick={() => this.props.navigate("/docgia")}>Xem Thông Tin Đọc Giả</a>
+                                <a className="nav-link active" onClick={() => this.props.navigate("/thuthu")}>Xem Thông Tin Phiếu Mượn</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={() => this.props.navigate("/docgia/phieumuon")}>Xem thông tin phiếu mượn</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Xem Thông tin thẻ đọc giả</a>
-                            </li>  
+                            
                             <li className="nav-item">
                                 <a className="nav-link" onClick={this.dangXuat}>Đăng Xuất</a>
                             </li>
@@ -91,7 +74,7 @@ class DocGia_PhieuMuon extends Component {
                                                                     <td>Chưa trả sách</td>
                                                             }
                                                             <td>
-                                                                <button onClick={() => this.props.navigate(`/docgia/phieumuon/${phieumuon.id}/chitiet`)}
+                                                                <button onClick={() => this.props.navigate(`/thuthu/phieumuon/${phieumuon.id}`)}
                                                                     className="btn btn-info">Chi Tiết
                                                                 </button>
 
@@ -111,4 +94,4 @@ class DocGia_PhieuMuon extends Component {
     }
 }
 
-export default withRouter(DocGia_PhieuMuon);
+export default withRouter(ThuThu_PhieuMuon);

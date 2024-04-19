@@ -20,8 +20,10 @@ class DocGia_Home extends Component {
         this.changeSDTHandler = this.changeSDTHandler.bind(this);
         this.changeTenDocGiaHandler = this.changeTenDocGiaHandler.bind(this);
         this.updateDocGia = this.updateDocGia.bind(this);
+        this.dangXuat=this.dangXuat.bind(this);
     }
     componentDidMount() {
+        if(localStorage.getItem('Authorization')!==null)
         {
             DocGiaServices.getInfo(localStorage.getItem('name')).then(res => {
                 let docgia = res.data;
@@ -31,8 +33,15 @@ class DocGia_Home extends Component {
                 this.setState({ sdt: docgia.sdt });
                 this.setState({ ngaySinh: docgia.ngaySinh });
                 this.setState({ id: docgia.id });
-            })
-        }
+            })}
+            else 
+                this.props.navigate("/login");
+       
+    }
+    dangXuat()
+    {
+        localStorage.removeItem('Authorization');
+        this.props.navigate("/home");
     }
     updateDocGia = (event) => {
         let update;
@@ -77,6 +86,9 @@ class DocGia_Home extends Component {
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Xem Thông tin thẻ đọc giả</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={this.dangXuat}>Đăng Xuất</a>
                             </li>
                         </ul>
                     </div>

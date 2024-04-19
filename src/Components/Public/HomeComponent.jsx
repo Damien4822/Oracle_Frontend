@@ -6,8 +6,6 @@ class HomeComponent extends Component {
     render() {
         return (
             <div>
-
-
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" onClick={() => this.props.navigate("/home")}>Trang Chủ</a>
@@ -44,11 +42,11 @@ class HomeComponent extends Component {
                                                             ((jwtDecode(localStorage.getItem('Authorization')).role=="[THUTHU]")
                                                             ?
                                                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                                <li><a className="dropdown-item" >TNavbar cho thủ thư</a></li>
+                                                                <li><a className="dropdown-item" onClick={()=> this.props.navigate("/thuthu")}>Chuyển đến trang thủ thư</a></li>
                                                             </ul>
                                                             :
                                                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                                    <li><a className="dropdown-item" onClick={()=> this.props.navigate("/admin")}>Navbar cho admin</a></li>
+                                                                    <li><a className="dropdown-item" onClick={()=> this.props.navigate("/admin")}>Chuyển đến trang admin</a></li>
                                                                 </ul>)
                                                 )
                                             }

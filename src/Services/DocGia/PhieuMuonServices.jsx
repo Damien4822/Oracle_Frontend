@@ -26,7 +26,16 @@ class DocGiaPhieuMuonService {
                 'Content-Type': 'application/json',
             }})
     }
-    
+    getOnePhieuMuon(id)
+    {
+        const token= localStorage.getItem("Authorization");
+        return axios.get(PhieuMuon_API+parseInt(id),{
+            Headers:{
+                'Authorization':'Bearer '+ token,
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }})
+    }
     getOneQuyenSach(id)
     {
         const token= localStorage.getItem("Authorization");
@@ -50,6 +59,16 @@ class DocGiaPhieuMuonService {
     {
         const token= localStorage.getItem("Authorization");
         return axios.post("http://localhost:8080/docgia/"+ localStorage.getItem('id') +"/phieumuon/create",phieu,{
+            Headers:{
+                'Authorization':'Bearer '+ token,
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }})
+    }
+    createChiTietPhieuMuon(id,list)
+    {
+        const token= localStorage.getItem("Authorization");
+        return axios.post(CTPhieuMuon_API+id+"/ctphieumuon/create",list,{
             Headers:{
                 'Authorization':'Bearer '+ token,
                 'Access-Control-Allow-Origin': '*',

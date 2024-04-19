@@ -9,12 +9,22 @@ class DauSachList extends Component {
             books: []
         }
         this.deleteBook=this.deleteBook.bind(this);
+        this.dangXuat=this.dangXuat.bind(this);
     }
     componentDidMount() {
+        if(localStorage.getItem('Authorization')!==null)
+        {
         DauSachServices.getAllDauSach().then(res => {
             console.log(res.data);
             this.setState({ books: res.data })
-        });
+        });}
+        else
+        this.props.navigate("/login")
+    }
+    dangXuat = (e) =>
+    {
+        localStorage.removeItem('Authorization');
+        this.props.navigate("/home")
     }
     deleteBook(id){
        DauSachServices.deleteBook(id);
@@ -34,6 +44,9 @@ class DauSachList extends Component {
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={() => this.props.navigate("/admin/taikhoan")}>Xem Thông tin Tài khoản</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={this.dangXuat}>Đăng Xuất</a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +81,7 @@ class DauSachList extends Component {
                                 }
                             </tbody>
                         </table>
-                        <button>Thêm sách mới</button>
+                        <button className='btn btn-primary'>Thêm sách mới</button>
                     </div>
                 </div>
 
