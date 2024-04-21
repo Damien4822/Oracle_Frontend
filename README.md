@@ -1,3 +1,5 @@
+#
+Wont updating this project anymore. Details at the Oracle_Backend Repo.
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
