@@ -23,6 +23,7 @@ import NXBDetail from './Components/Admin/NXBDetail';
 import TaiKhoanDetail from './Components/Admin/TaiKhoanDetail';
 import PhieuMuonList from './Components/ThuThu/PhieuMuonList';
 import PhieuMuonDetail from './Components/ThuThu/PhieuMuonDetail';
+import DocGia_TheDocGia from './Components/DocGia/DocGia_TheDocGia';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/docgia/phieumuon" element={<DocGia_PhieuMuon/>}/>
         <Route path="/docgia/phieumuon/:id/chitiet" element={<DocGia_CTPhieuMuon/>}/>
         <Route path="/docgia/phieumuon/create" element={<DocGia_PhieuMuonCreate/>}/>
+        <Route path="/docgia/thedocgia" element={<DocGia_TheDocGia/>}/>
 
         <Route path="/admin" element={<DauSachList/>}/>
         <Route path = "/admin/book/:id" element={<DauSachDetail/>}/>

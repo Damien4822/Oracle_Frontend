@@ -85,7 +85,7 @@ class DocGia_Home extends Component {
                                 <a className="nav-link" onClick={() => this.props.navigate("/docgia/phieumuon")}>Xem thông tin phiếu mượn</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Xem Thông tin thẻ đọc giả</a>
+                                <a className="nav-link" onClick={() => this.props.navigate("/docgia/thedocgia")}>Xem Thông tin thẻ đọc giả</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={this.dangXuat}>Đăng Xuất</a>
